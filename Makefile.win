@@ -1,0 +1,40 @@
+# Project: MACSvr
+# Compiler: Default GCC compiler
+# Compiler Type: MingW 3
+# Makefile created by wxDev-C++ 7.3 on 18/06/12 12:13
+
+WXLIBNAME = wxmsw28
+CPP       = g++.exe
+CC        = gcc.exe
+WINDRES   = "windres.exe"
+OBJ       = Objects/MingW/MACSvrApp.o Objects/MingW/MACSvrFrm.o Objects/MingW/MACSvr_private.res
+LINKOBJ   = "Objects/MingW/MACSvrApp.o" "Objects/MingW/MACSvrFrm.o" Objects/MingW/MACSvr_private.res
+LIBS      = -L"D:/Program Files/Dev-Cpp/Lib" -mwindows -l$(WXLIBNAME) -l$(WXLIBNAME)_gl -lwxtiff -lwxjpeg -lwxpng -lwxzlib -lwxexpat -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lodbc32 -lopengl32 ../../lib/libws2_32.a  
+INCS      = -I"D:/Program Files/Dev-Cpp/Include"
+CXXINCS   = -I"D:/Program Files/Dev-Cpp/lib/gcc/mingw32/3.4.5/include" -I"D:/Program Files/Dev-Cpp/include/c++/3.4.5/backward" -I"D:/Program Files/Dev-Cpp/include/c++/3.4.5/mingw32" -I"D:/Program Files/Dev-Cpp/include/c++/3.4.5" -I"D:/Program Files/Dev-Cpp/include" -I"D:/Program Files/Dev-Cpp/" -I"D:/Program Files/Dev-Cpp/include/common/wx/msw" -I"D:/Program Files/Dev-Cpp/include/common/wx/generic" -I"D:/Program Files/Dev-Cpp/include/common/wx/html" -I"D:/Program Files/Dev-Cpp/include/common/wx/protocol" -I"D:/Program Files/Dev-Cpp/include/common/wx/xml" -I"D:/Program Files/Dev-Cpp/include/common/wx/xrc" -I"D:/Program Files/Dev-Cpp/include/common/wx" -I"D:/Program Files/Dev-Cpp/include/common"
+RCINCS    = --include-dir "D:/PROGRA~1/Dev-Cpp/include/common"
+BIN       = Output/MingW/MACSvr.exe
+DEFINES   = -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__
+CXXFLAGS  = $(CXXINCS) $(DEFINES) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__   -fexpensive-optimizations -O3
+CFLAGS    = $(INCS) $(DEFINES) -fno-exceptions -fno-pcc-struct-return -fstrict-aliasing -Wall -D__WXMSW__ -D__GNUWIN32__ -D__WIN95__   -fexpensive-optimizations -O3
+GPROF     = gprof.exe
+RM        = rm -f
+LINK      = g++.exe
+
+.PHONY: all all-before all-after clean clean-custom
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	$(RM) $(LINKOBJ) "$(BIN)"
+
+$(BIN): $(OBJ)
+	$(LINK) $(LINKOBJ) -o "$(BIN)" $(LIBS) 
+
+Objects/MingW/MACSvrApp.o: $(GLOBALDEPS) MACSvrApp.cpp MACSvrApp.h MACSvrFrm.h
+	$(CPP) -c MACSvrApp.cpp -o Objects/MingW/MACSvrApp.o $(CXXFLAGS)
+
+Objects/MingW/MACSvrFrm.o: $(GLOBALDEPS) MACSvrFrm.cpp MACSvrFrm.h
+	$(CPP) -c MACSvrFrm.cpp -o Objects/MingW/MACSvrFrm.o $(CXXFLAGS)
+
+Objects/MingW/MACSvr_private.res: Objects/MingW/MACSvr_private.rc MACSvrApp.rc 
+	$(WINDRES) --input-format=rc -o Objects/MingW/MACSvr_private.res $(RCINCS) Objects/MingW/MACSVR~1.RC -O coff
