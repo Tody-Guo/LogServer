@@ -1,0 +1,4 @@
+Output/
+Objects/MingW/*.o
+*.exe
+
